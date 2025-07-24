@@ -12,6 +12,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
 
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.Callable;
+
 @Command(
         name = "App",
         mixinStandardHelpOptions = true,
@@ -19,7 +23,7 @@ import java.util.Map;
         description = "Compares two configuration files and shows a difference."
 )
 
-public class App implements Runnable {
+public class App implements Callable<Integer> {
 
     @Parameters(
             index = "0",
@@ -48,21 +52,46 @@ public class App implements Runnable {
         System.exit(exitCode);
 
     }
-    @Override
-    public void run() {
-        try {
-            Map<String, Object> data1 = parse(filePath1);
-            Map<String, Object> data2 = parse(filePath2);
-            System.out.println("File 1 content: " + data1);
-            System.out.println("File 2 content: " + data2);
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-        }
-    }
 
-    private static Map<String, Object> parse(String filePath) throws Exception{
+    private static Map<String, Object> parse(String filePath) throws Exception {
         String content = Files.readString(Paths.get(filePath));
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(content, Map.class);
+        return mapper.readValue(content, Map.class);}
+
+    @Override
+    public Integer call() throws Exception {
+        Map<String, Object> data1 = parse(filePath1);
+        Map<String, Object> data2 = parse(filePath2);
+        String diff = generateDiff(data1, data2);
+        System.out.println(diff);
+
+        return 0;
+    }
+
+    private String generateDiff(Map<String, Object> data1, Map<String, Object> data2) {
+        StringBuilder strb = new StringBuilder();
+        strb.append("{\n");
+
+        Set<String> allKeys = new TreeSet<>();
+        allKeys.addAll(data1.keySet());
+        allKeys.addAll(data2.keySet());
+
+        for (String key : allKeys) {
+            Object value1 = data1.get(key);
+            Object value2 = data2.get(key);
+
+            if (value1 != null && value2 != null && value1.equals(value2)) {
+                strb.append("   ").append(key).append(": ").append(value1).append("\n");
+            } else if (value1 != null && value2 == null) {
+                strb.append("  - ").append(key).append(": ").append(value1).append("\n");
+            } else if (value1 == null && value2 != null) {
+                strb.append("  + ").append(key).append(": ").append(value2).append("\n");
+            } else {
+                strb.append("  - ").append(key).append(": ").append(value1).append("\n");
+                strb.append("  + ").append(key).append(": ").append(value2).append("\n");
+            }
+        }
+        strb.append("}");
+        return strb.toString();
     }
 }
