@@ -2,6 +2,27 @@ plugins {
     id("java")
     id ("application")
     id ("com.github.ben-manes.versions") version "0.51.0"
+    id ("checkstyle")
+    id("org.sonarqube") version "6.2.0.5505"
+    id("jacoco")
+}
+
+jacoco {
+    toolVersion = ("0.8.11")
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "Asya-67_java-project-71")
+        property("sonar.organization", "asya-67-71")
+        property("sonar.host.url", "https://sonarcloud.io")
+    }
+}
+
+checkstyle {
+    toolVersion = ("10.26.1")
+    configFile = rootProject.file("config/checkstyle/checkstyle.xml")
+    isShowViolations = true
 }
 
 group = "hexlet.code"
@@ -18,10 +39,21 @@ dependencies {
     annotationProcessor ("info.picocli:picocli-codegen:4.7.7")
     implementation("info.picocli:picocli:4.7.5")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.1")
+    testImplementation ("org.junit.jupiter:junit-jupiter-api:5.10.0")
+    testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
 }
 
 tasks.test {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
 }
 
 application {

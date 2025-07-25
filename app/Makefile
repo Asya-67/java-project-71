@@ -1,2 +1,10 @@
-run-dist:
-	./build/install/app/bin/app
+.PHONY: build test lint
+
+build:
+	./gradlew build
+
+test:
+	./gradlew test
+
+lint:
+	./gradlew checkstyleMain checkstyleTest

@@ -68,7 +68,7 @@ public class App implements Callable<Integer> {
         return 0;
     }
 
-    private String generateDiff(Map<String, Object> data1, Map<String, Object> data2) {
+     String generateDiff(Map<String, Object> data1, Map<String, Object> data2) {
         StringBuilder strb = new StringBuilder();
         strb.append("{\n");
 
