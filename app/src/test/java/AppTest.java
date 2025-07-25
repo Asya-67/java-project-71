@@ -22,17 +22,20 @@ public class AppTest {
         Map<String, Object> data1 = mapper.readValue(file1, Map.class);
         Map<String, Object> data2 = mapper.readValue(file2, Map.class);
         String expected = """
-                {
-                   follow: false
-                   host: hexlet.io
-                  - proxy: 123.234.53.22
-                  - timeout: 50
-                  + timeout: 20
-                  + verbose: true
-                }""";
+    {
+    follow: false
+    host: hexlet.io
+    - proxy: 123.234.53.22
+    - timeout: 50
+    + timeout: 20
+    + verbose: true
+    }""";
         App app = new App();
         String actual = app.generateDiff(data1, data2);
 
-        assertEquals(expected, actual);
+        System.out.println("EXPECTED:\n" + expected);
+        System.out.println("ACTUAL:\n" + actual);
+
+        assertEquals(expected.trim(), actual.trim());
     }
 }

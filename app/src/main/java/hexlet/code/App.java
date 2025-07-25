@@ -6,7 +6,6 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -56,7 +55,8 @@ public class App implements Callable<Integer> {
     private static Map<String, Object> parse(String filePath) throws Exception {
         String content = Files.readString(Paths.get(filePath));
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(content, Map.class);}
+        return mapper.readValue(content, Map.class);
+    }
 
     @Override
     public Integer call() throws Exception {
@@ -68,7 +68,7 @@ public class App implements Callable<Integer> {
         return 0;
     }
 
-     String generateDiff(Map<String, Object> data1, Map<String, Object> data2) {
+    String generateDiff(Map<String, Object> data1, Map<String, Object> data2) {
         StringBuilder strb = new StringBuilder();
         strb.append("{\n");
 
@@ -83,12 +83,12 @@ public class App implements Callable<Integer> {
             if (value1 != null && value2 != null && value1.equals(value2)) {
                 strb.append("   ").append(key).append(": ").append(value1).append("\n");
             } else if (value1 != null && value2 == null) {
-                strb.append("  - ").append(key).append(": ").append(value1).append("\n");
+                strb.append("   - ").append(key).append(": ").append(value1).append("\n");
             } else if (value1 == null && value2 != null) {
-                strb.append("  + ").append(key).append(": ").append(value2).append("\n");
+                strb.append("   + ").append(key).append(": ").append(value2).append("\n");
             } else {
-                strb.append("  - ").append(key).append(": ").append(value1).append("\n");
-                strb.append("  + ").append(key).append(": ").append(value2).append("\n");
+                strb.append("   - ").append(key).append(": ").append(value1).append("\n");
+                strb.append("   + ").append(key).append(": ").append(value2).append("\n");
             }
         }
         strb.append("}");
