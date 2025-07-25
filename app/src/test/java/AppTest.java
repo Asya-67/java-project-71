@@ -9,10 +9,11 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AppTest {
+
     private final ObjectMapper mapper = new ObjectMapper();
 
     @Test
-        void testGenerateDiffWithFlatJsonFiles() throws Exception {
+    void testGenerateDiffWithFlatJsonFiles() throws Exception {
         InputStream file1 = getClass().getClassLoader().getResourceAsStream("file1.json");
         InputStream file2 = getClass().getClassLoader().getResourceAsStream("file2.json");
         if (file1 == null || file2 == null) {
@@ -21,21 +22,19 @@ public class AppTest {
 
         Map<String, Object> data1 = mapper.readValue(file1, Map.class);
         Map<String, Object> data2 = mapper.readValue(file2, Map.class);
+
         String expected = """
-    {
-    follow: false
-    host: hexlet.io
-    - proxy: 123.234.53.22
-    - timeout: 50
-    + timeout: 20
-    + verbose: true
-    }""";
+                {
+                   - follow: false
+                   host: hexlet.io
+                   - proxy: 123.234.53.22
+                   - timeout: 50
+                   + timeout: 20
+                   + verbose: true
+                }""";
+
         App app = new App();
         String actual = app.generateDiff(data1, data2);
-
-        System.out.println("EXPECTED:\n" + expected);
-        System.out.println("ACTUAL:\n" + actual);
-
-        assertEquals(expected.trim(), actual.trim());
+        assertEquals(expected, actual);
     }
 }
