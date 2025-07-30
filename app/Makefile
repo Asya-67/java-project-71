@@ -1,4 +1,4 @@
-.PHONY: build test lint
+.PHONY: build test lint run-dist
 
 build:
 	./gradlew build
@@ -8,3 +8,6 @@ test:
 
 lint:
 	./gradlew checkstyleMain checkstyleTest
+
+run-dist:
+	./build/install/app/bin/app $(ARGS)

@@ -37,7 +37,7 @@ public class App implements Callable<Integer> {
             description = "output format [default: ${DEFAULT-VALUE}]",
             defaultValue = "stylish"
     )
-    private String format;
+    private String format = "stylish";
 
     public static void main(String[] args) {
 
