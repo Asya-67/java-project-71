@@ -4,6 +4,7 @@ import java.util.List;
 
 public class StylishFormatter {
     public static String format(List<DiffSecond> diffList) {
+        System.out.println("Stylish formatter is used");
         StringBuilder sb = new StringBuilder();
         sb.append("{\n");
         for (DiffSecond diff : diffList) {

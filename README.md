@@ -9,3 +9,4 @@
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Asya-67_java-project-71&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Asya-67_java-project-71)
 ![Пример работы приложения](assets/2025-07-30.png)
 ![Пример работы приложения](assets/222.png)
+![Пример работы приложения](assets/2025-07-31.png)

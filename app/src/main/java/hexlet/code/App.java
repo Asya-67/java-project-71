@@ -8,6 +8,7 @@ import picocli.CommandLine.Parameters;
 import java.util.Map;
 
 import java.util.concurrent.Callable;
+import hexlet.code.Plainform;
 
 @Command(
         name = "App",
@@ -48,11 +49,9 @@ public class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        Map<String, Object> data1 = Parser.parse(filePath1);
-        Map<String, Object> data2 = Parser.parse(filePath2);
-        String diff = Differ.generate(data1, data2);
+        System.out.println("Using format: " + format);
+        String diff = Differ.generate(filePath1, filePath2, format);
         System.out.println(diff);
-
         return 0;
     }
 }
