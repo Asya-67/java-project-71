@@ -2,9 +2,6 @@ package hexlet.code;
 
 import java.util.Map;
 import java.util.List;
-import hexlet.code.DiffSecond;
-import hexlet.code.Formatter;
-import hexlet.code.DiffAction;
 
 public class Differ {
     public static String generate(Map<String, Object> data1, Map<String, Object> data2) {

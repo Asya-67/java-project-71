@@ -1,11 +1,8 @@
 package hexlet.code;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.Map;
-import hexlet.code.DiffSecond;
-import hexlet.code.DiffSecond.Status;
 import java.util.Comparator;
 
 public class Plainform {
