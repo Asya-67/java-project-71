@@ -13,6 +13,8 @@ public class Formatter {
                 return Plainform.format(diffs);
             case "stylish":
                 return StylishFormatter.format(diffs);
+            case "json":
+                return JsonFormatter.format(diffs);
             default:
                 throw new IllegalArgumentException("Unknown format: " + formatName);
         }
