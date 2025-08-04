@@ -11,3 +11,6 @@ lint:
 
 run-dist:
 	./build/install/app/bin/app $(ARGS)
+
+setup:
+	cd code/app && chmod +x gradlew && ./gradlew clean install
