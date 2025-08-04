@@ -6,11 +6,11 @@ import java.util.Map;
 import java.util.Comparator;
 
 public class Plainform {
-    public static String format(List<DiffSecond> diffs) {
+    public static String format(List<DifferenceContainer> diffs) {
         System.out.println("Plain formatter is used");
         return diffs.stream()
-                .filter(d -> d.getStatus() != DiffSecond.Status.UNCHANGED)
-                .sorted(Comparator.comparing(DiffSecond::getKey))
+                .filter(d -> d.getStatus() != DifferenceContainer.Status.UNCHANGED)
+                .sorted(Comparator.comparing(DifferenceContainer::getKey))
                 .map(d -> {
                     String key = d.getKey();
                     Object oldVal = toPlainString(d.getOldValue());

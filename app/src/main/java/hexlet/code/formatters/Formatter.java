@@ -3,7 +3,7 @@ package hexlet.code;
 import java.util.List;
 
 public class Formatter {
-    public static String format(List<DiffSecond> diffs, String formatName) {
+    public static String format(List<DifferenceContainer> diffs, String formatName) {
         if (formatName == null || formatName.isEmpty()) {
             formatName = "stylish";
         }

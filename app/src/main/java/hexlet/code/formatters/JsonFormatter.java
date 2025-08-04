@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 
 public class JsonFormatter {
-    public static String format(List<DiffSecond> diffs) {
+    public static String format(List<DifferenceContainer> diffs) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(diffs);

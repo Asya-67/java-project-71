@@ -2,7 +2,7 @@ package hexlet.code;
 
 import java.util.Objects;
 
-public class DiffSecond {
+public class DifferenceContainer {
     public enum Status {
         UNCHANGED,
         ADDED,
@@ -14,7 +14,7 @@ public class DiffSecond {
     private Object newValue;
     private Status status;
 
-    public DiffSecond(String key, Object oldValue, Object newValue, hexlet.code.DiffSecond.Status status) {
+    public DifferenceContainer(String key, Object oldValue, Object newValue, hexlet.code.DiffSecond.Status status) {
         this.key = key;
         this.oldValue = oldValue;
         this.newValue = newValue;
@@ -33,7 +33,7 @@ public class DiffSecond {
         return newValue;
     }
 
-    public hexlet.code.DiffSecond.Status getStatus() {
+    public hexlet.code.DifferenceContainer.Status getStatus() {
         return status;
     }
 
@@ -49,7 +49,7 @@ public class DiffSecond {
         this.newValue = newValue;
     }
 
-    public void setStatus(hexlet.code.DiffSecond.Status status) {
+    public void setStatus(hexlet.code.DifferenceContainer.Status status) {
         this.status = status;
     }
 
@@ -58,10 +58,10 @@ public class DiffSecond {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof DiffSecond)) {
+        if (!(o instanceof DifferenceContainer)) {
             return false;
         }
-        DiffSecond that = (DiffSecond) o;
+        DifferenceContainer that = (DifferenceContainer) o;
         return Objects.equals(key, that.key)
                 && Objects.equals(oldValue, that.oldValue)
                 && Objects.equals(newValue, that.newValue)
@@ -73,7 +73,7 @@ public class DiffSecond {
     }
     @Override
     public String toString() {
-        return "DiffSecond{"
+        return "DifferenceContainer{"
                 + "key='" + key + '\''
                 + ", oldValue=" + oldValue
                 + ", newValue=" + newValue
