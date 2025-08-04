@@ -7,7 +7,6 @@ import java.util.Comparator;
 
 public class Plainform {
     public static String format(List<DifferenceContainer> diffs) {
-        System.out.println("Plain formatter is used");
         return diffs.stream()
                 .filter(d -> d.getStatus() != DifferenceContainer.Status.UNCHANGED)
                 .sorted(Comparator.comparing(DifferenceContainer::getKey))
