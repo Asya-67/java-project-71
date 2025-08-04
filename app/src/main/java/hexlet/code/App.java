@@ -45,6 +45,10 @@ public class App implements Callable<Integer> {
 
     }
 
+    /**
+     * Выполняет сравнение двух файлов и выводит разницу в заданном формате.
+     *
+     */
     @Override
     public Integer call() throws Exception {
         String diff = Differ.generate(filePath1, filePath2, format);
