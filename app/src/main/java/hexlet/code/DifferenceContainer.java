@@ -87,8 +87,12 @@ public final class DifferenceContainer {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof DifferenceContainer)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof DifferenceContainer)) {
+            return false;
+        }
         DifferenceContainer that = (DifferenceContainer) o;
         return Objects.equals(key, that.key)
                 && Objects.equals(oldValue, that.oldValue)
@@ -102,12 +106,11 @@ public final class DifferenceContainer {
     }
 
     @Override
-    public String toString() {
-        return "DifferenceContainer{" +
-                "key='" + key + '\'' +
-                ", oldValue=" + oldValue +
-                ", newValue=" + newValue +
-                ", status=" + status +
-                '}';
-    }
+    return "DifferenceContainer{"
+            + "key='" + key + '\''
+            + ", oldValue=" + oldValue
+            + ", newValue=" + newValue
+            + ", status=" + status
+            + '}';
+}
 }
