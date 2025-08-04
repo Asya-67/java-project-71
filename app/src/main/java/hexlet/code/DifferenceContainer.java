@@ -106,11 +106,11 @@ public final class DifferenceContainer {
     }
 
     @Override
-    return "DifferenceContainer{"
-            + "key='" + key + '\''
-            + ", oldValue=" + oldValue
-            + ", newValue=" + newValue
-            + ", status=" + status
-            + '}';
-}
-}
+    public String toString() {
+        return "DifferenceContainer{"
+                + "key='" + key + '\''
+                + ", oldValue=" + oldValue
+                + ", newValue=" + newValue
+                + ", status=" + status
+                + '}';
+    }
