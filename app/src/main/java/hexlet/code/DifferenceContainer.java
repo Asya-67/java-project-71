@@ -3,86 +3,111 @@ package hexlet.code;
 import java.util.Objects;
 
 public final class DifferenceContainer {
+
     public enum Status {
         UNCHANGED,
         ADDED,
         CHANGED,
         REMOVED
     }
+
     private String key;
     private Object oldValue;
     private Object newValue;
     private Status status;
 
-    public DifferenceContainer(
-            String key,
-            Object oldValue,
-            Object newValue,
-            hexlet.code.DifferenceContainer.Status status
-    ) {
+    /**
+     * @param key ключ
+     * @param oldValue старое значение (может быть null)
+     * @param newValue новое значение (может быть null)
+     * @param status статус изменения
+     */
+    public DifferenceContainer(String key, Object oldValue, Object newValue, Status status) {
         this.key = key;
         this.oldValue = oldValue;
         this.newValue = newValue;
         this.status = status;
     }
 
-    public java.lang.String getKey() {
+    /**
+     * @return ключ
+     */
+    public String getKey() {
         return key;
     }
 
-    public java.lang.Object getOldValue() {
+    /**
+     * @return старое значение (может быть null)
+     */
+    public Object getOldValue() {
         return oldValue;
     }
 
-    public java.lang.Object getNewValue() {
+    /**
+     * @return новое значение (может быть null)
+     */
+    public Object getNewValue() {
         return newValue;
     }
 
-    public hexlet.code.DifferenceContainer.Status getStatus() {
+    /**
+     * @return статус изменения
+     */
+    public Status getStatus() {
         return status;
     }
 
-    public void setKey(java.lang.String key) {
+    /**
+     * @param key новый ключ
+     */
+    public void setKey(String key) {
         this.key = key;
     }
 
-    public void setOldValue(java.lang.Object oldValue) {
+    /**
+     * @param oldValue новое старое значение
+     */
+    public void setOldValue(Object oldValue) {
         this.oldValue = oldValue;
     }
 
-    public void setNewValue(java.lang.Object newValue) {
+    /**
+     * @param newValue новое значение
+     */
+    public void setNewValue(Object newValue) {
         this.newValue = newValue;
     }
 
-    public void setStatus(hexlet.code.DifferenceContainer.Status status) {
+    /**
+     * @param status новый статус
+     */
+    public void setStatus(Status status) {
         this.status = status;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof DifferenceContainer)) {
-            return false;
-        }
+        if (this == o) return true;
+        if (!(o instanceof DifferenceContainer)) return false;
         DifferenceContainer that = (DifferenceContainer) o;
         return Objects.equals(key, that.key)
                 && Objects.equals(oldValue, that.oldValue)
                 && Objects.equals(newValue, that.newValue)
                 && status == that.status;
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(key, oldValue, newValue, status);
     }
+
     @Override
     public String toString() {
-        return "DifferenceContainer{"
-                + "key='" + key + '\''
-                + ", oldValue=" + oldValue
-                + ", newValue=" + newValue
-                + ", status=" + status
-                + '}';
+        return "DifferenceContainer{" +
+                "key='" + key + '\'' +
+                ", oldValue=" + oldValue +
+                ", newValue=" + newValue +
+                ", status=" + status +
+                '}';
     }
 }
