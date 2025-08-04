@@ -2,7 +2,7 @@ package hexlet.code;
 
 import java.util.Objects;
 
-public class DifferenceContainer {
+public final class DifferenceContainer {
     public enum Status {
         UNCHANGED,
         ADDED,
