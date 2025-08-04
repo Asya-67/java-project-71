@@ -14,7 +14,7 @@ public class DifferenceContainer {
     private Object newValue;
     private Status status;
 
-    public DifferenceContainer(String key, Object oldValue, Object newValue, hexlet.code.DiffSecond.Status status) {
+    public DifferenceContainer(String key, Object oldValue, Object newValue, hexlet.code.DifferenceContainer.Status status) {
         this.key = key;
         this.oldValue = oldValue;
         this.newValue = newValue;
