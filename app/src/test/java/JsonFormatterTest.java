@@ -9,8 +9,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 public class JsonFormatterTest {
     @Test
     public void jsonTestFormat() throws JsonProcessingException {
-        DifferenceContainer diff1 = new DifferenceContainer("key1", "oldVal1", "newVal1", DifferenceContainer.Status.CHANGED);
-        DifferenceContainer diff2 = new DifferenceContainer("key2", null, "val2", DifferenceContainer.Status.ADDED);
+        DifferenceContainer diff1 = new DifferenceContainer(
+                "key1",
+                "oldVal1",
+                "newVal1",
+                DifferenceContainer.Status.CHANGED);
+        DifferenceContainer diff2 = new DifferenceContainer(
+                "key2",
+                null,
+                "val2",
+                DifferenceContainer.Status.ADDED);
         List<DifferenceContainer> diffs = List.of(diff1, diff2);
 
         String json = JsonFormatter.format(diffs);
