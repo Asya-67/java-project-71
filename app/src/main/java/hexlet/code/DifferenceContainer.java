@@ -17,10 +17,10 @@ public final class DifferenceContainer {
     private Status status;
 
     /**
-     * @param key ключ
+     * @param key      ключ
      * @param oldValue старое значение (может быть null)
      * @param newValue новое значение (может быть null)
-     * @param status статус изменения
+     * @param status   статус изменения
      */
     public DifferenceContainer(String key, Object oldValue, Object newValue, Status status) {
         this.key = key;
@@ -114,3 +114,4 @@ public final class DifferenceContainer {
                 + ", status=" + status
                 + '}';
     }
+}
